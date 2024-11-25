@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# GAMTHub 網站
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+本網站旨在提供即時且準確的用戶數據，致力於為使用者提供便捷的服務。在此平台中，用戶無需登錄 Discord 帳號，即可查看其他用戶的在線狀態及其當前遊玩的遊戲。網站致力於簡化用戶體驗，使用戶能夠輕鬆獲取遊戲社群動態，並促進更高效的互動與交流。
 
-## Available Scripts
+此功能旨在為遊戲玩家及社群成員提供一個更直觀、便捷的方式來了解彼此的遊戲活動，無需額外的帳號綁定或操作。
 
-In the project directory, you can run:
+### 部屬環境
 
-### `npm start`
+#### `npm run build`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+生成部署環境的檔案並執行，部分 API 要求無法在本地 ( Local ) 使用
+以下為部分提供服務的 API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### 提供服務
 
-### `npm test`
+獲取指定服務器中的用戶基本資料。
+`https://gamt-api.vercel.app/api/UserInfo?id=&who=`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+獲取指定頻道的所有檔案，包括圖片、影片及其他文件。
+`https://gamt-api.vercel.app/api/GroupInfo?id=&grouop=`
 
-### `npm run build`
+檢測 API 服務器的運行狀況，確認服務是否正常。
+`https://gamt-api.vercel.app/api/test`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+歡迎使用跟申請
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<hr />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+這是網站 [GAMTHub](https://gamthub.web.app/)
