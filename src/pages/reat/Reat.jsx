@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { TiDelete } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa";
 import styles from './Reat.module.scss';
@@ -8,11 +8,44 @@ import Loading from './loading/Loading';
 export default function Reat() {
 
     const [data, setData] = useState(null);
-    const [savedata, setSavedata] = useState({});
+    const [savedata, setSavedata] = useState(null);
     const [remove, setRemove] = useState(null);
     const [newitem, setNewitem] = useState(null);
     const [draggingItem, setDraggingItem] = useState(null);
     const foodRef = useRef(null);
+
+    // save api
+    const updateData = useCallback(async () => {
+        if (!data) {
+            alert("Data is not available yet. Please try again later.");
+            return;
+        }
+        setSavedata(data);
+        try {
+            await fetch('https://gamt-api.vercel.app/api/private/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.data.status === true) {
+                        alert("update suessful")
+                    } else {
+                        alert("update error")
+                        setData(savedata)
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                })
+        } catch (e) {
+            alert("當前網路不佳，稍後在試")
+            console.error(e.message);
+        }
+    }, [data, savedata])
 
     // 獲取數據
     useEffect(() => {
@@ -23,6 +56,7 @@ export default function Reat() {
                     .then((data) => {
                         console.log(data);
                         setData(data.data);
+                        setSavedata(data);
                     })
                     .catch((error) => {
                         console.error('Error fetching data:', error);
@@ -48,7 +82,7 @@ export default function Reat() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [])
+    }, [updateData])
 
     // 移除移動
     const moveToWhite = (item) => {
@@ -88,35 +122,6 @@ export default function Reat() {
             }, 50);
         }, 300);
     };
-
-    // save api
-    const updateData = async () => {
-        setSavedata(data)
-        try {
-            await fetch('https://gamt-api.vercel.app/api/private/update', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(savedata)
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.data.status === true) {
-                        alert("update suessful")
-                    } else {
-                        alert("update error")
-                        setData(savedata)
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error fetching data:', error);
-                })
-        } catch (e) {
-            alert("當前網路不佳，稍後在試")
-            console.error(e.message);
-        }
-    }
 
     // 輸入添加食物
     const addFood = () => {
