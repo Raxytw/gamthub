@@ -7,7 +7,7 @@ import Loading from './loading/Loading';
 
 export default function Reat() {
 
-    const [data, setData] = useState({ black: [], white: ["a", "b", "c"] });
+    const [data, setData] = useState(null);
     const [savedata, setSavedata] = useState(null);
     const [remove, setRemove] = useState(null);
     const [newitem, setNewitem] = useState(null);
