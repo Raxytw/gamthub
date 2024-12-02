@@ -166,7 +166,7 @@ export default function Reat() {
         setRemove(item);
         setTimeout(() => {
             setData((prevData) => {
-                const updatedWhite = prevData.black.filter((whiteItem) => whiteItem !== item);
+                const updatedWhite = prevData.white.filter((whiteItem) => whiteItem !== item);
                 const updatedBlack = [...prevData.black, item];
                 return { black: updatedBlack, white: updatedWhite };
             });
