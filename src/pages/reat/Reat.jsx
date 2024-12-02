@@ -93,19 +93,19 @@ export default function Reat() {
     const updateData = async () => {
         setSavedata(data)
         try {
-            await ('https://gamt-api.vercel.app/api/private/update', {
+            await fetch('https://gamt-api.vercel.app/api/private/update', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: savedata
+                body: JSON.stringify(savedata)
             })
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.data.status === true) {
-                        alert("資料以存處")
+                        alert("update suessful")
                     } else {
-                        alert("資料存處失敗")
+                        alert("update error")
                         setData(savedata)
                     }
                 })
@@ -114,6 +114,7 @@ export default function Reat() {
                 })
         } catch (e) {
             alert("當前網路不佳，稍後在試")
+            console.error(e.message);
         }
     }
 
