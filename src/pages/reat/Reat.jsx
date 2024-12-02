@@ -7,7 +7,7 @@ import Loading from './loading/Loading';
 
 export default function Reat() {
 
-    const [data, setData] = useState({ black: ["Q Burger", "美食街"], white: ["成功牛排", "義大利麵"] });
+    const [data, setData] = useState(null);
     const [savedata, setSavedata] = useState({});
     const [remove, setRemove] = useState(null);
     const [newitem, setNewitem] = useState(null);
