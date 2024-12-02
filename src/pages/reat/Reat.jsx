@@ -102,7 +102,12 @@ export default function Reat() {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    alert("已存處: ", data);
+                    if (data.data.status === true) {
+                        alert("資料以存處")
+                    } else {
+                        alert("資料存處失敗")
+                        setData(savedata)
+                    }
                 })
                 .catch((error) => {
                     console.error('Error fetching data:', error);
