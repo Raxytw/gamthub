@@ -22,7 +22,7 @@ export default function Reat() {
                     .then((res) => res.json())
                     .then((data) => {
                         console.log(data);
-                        setData(data);
+                        setData(data.data);
                     })
                     .catch((error) => {
                         console.error('Error fetching data:', error);
