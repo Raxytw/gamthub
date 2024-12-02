@@ -7,12 +7,12 @@ import Loading from './loading/Loading';
 
 export default function Reat() {
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({ black: [], white: ["a", "b", "c"] });
     const [savedata, setSavedata] = useState(null);
     const [remove, setRemove] = useState(null);
     const [newitem, setNewitem] = useState(null);
     const [draggingItem, setDraggingItem] = useState(null);
-    const [viewText, setViewText] = useState("None");
+    const [viewText, setViewText] = useState("");
     const [isDrawing, setIsDrawing] = useState(false);
     const foodRef = useRef(null);
     const uConfettiRef = useRef(null);
@@ -24,7 +24,6 @@ export default function Reat() {
             alert("Data is not available yet. Please try again later.");
             return;
         }
-        setSavedata(data);
         try {
             await fetch('https://gamt-api.vercel.app/api/private/update', {
                 method: 'POST',
@@ -87,6 +86,13 @@ export default function Reat() {
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, [updateData])
+
+    useEffect(() => {
+        if (data) {
+            setSavedata(data);
+            updateData();
+        }
+    }, [data, updateData])
 
     const createConfetti = () => {
 
@@ -178,10 +184,8 @@ export default function Reat() {
                     setNewitem(null);
                 }, 500);
             }, 50);
+            setIsDrawing(false);
         }, 300);
-
-        updateData();
-        setIsDrawing(false);
     };
 
     // 移除移動
