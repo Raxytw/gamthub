@@ -54,7 +54,8 @@
             overflow-x: hidden;
 
             @include media-large {
-                max-height: 50px;
+                max-height: 40px;
+                margin: 2px 0;
             }
 
             li {
