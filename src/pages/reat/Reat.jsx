@@ -72,21 +72,6 @@ export default function Reat() {
         fetchData();
     }, [])
 
-    // 註冊 save 事件
-    useEffect(() => {
-        const handleKeyDown = (event) => {
-            if (event.ctrlKey && event.key === 's') {
-                event.preventDefault();
-                updateData();
-            }
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [updateData])
-
     useEffect(() => {
         if (data) {
             setSavedata(data);
